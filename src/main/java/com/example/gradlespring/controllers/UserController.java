@@ -2,6 +2,7 @@ package com.example.gradlespring.controllers;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,20 @@ public class UserController {
 	@RequestMapping(value = "/getUsers" ,method = RequestMethod.GET)
 	public List<User> getUsers() {
 		return this.userService.findAll();
+	}
+	
+	@RequestMapping(value = "/deleteUser",method = RequestMethod.POST)
+	public void deleteUser(@RequestBody String userJson) throws Exception {
+		this.mapper = new ObjectMapper();
+		
+		User user = this.mapper.readValue(userJson, User.class);
+		
+		if(Objects.isNull(user.getId())) {
+			throw new Exception("El id esta nulo");
+		}
+		
+		
+		this.userService.deleteUser(user.getId());
 	}
 	
 	
