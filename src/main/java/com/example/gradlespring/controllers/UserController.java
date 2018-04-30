@@ -1,6 +1,7 @@
 package com.example.gradlespring.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,13 @@ public class UserController {
 		//mensaje para cuando se esta consumiendo un servicio desde postman
 		return new RestResponse(HttpStatus.OK.value(), "Operacion exitosa");
 	}
+	
+	
+	@RequestMapping(value = "/getUsers" ,method = RequestMethod.GET)
+	public List<User> getUsers() {
+		return this.userService.findAll();
+	}
+	
 	
 	private boolean validate(User user) {
 		boolean isValid = true;
