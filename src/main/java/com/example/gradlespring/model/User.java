@@ -1,4 +1,4 @@
-package com.example.gradlesprint.model;
+package com.example.gradlespring.model;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;

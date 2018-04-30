@@ -1,4 +1,4 @@
-package com.example.gradlesprint.model;
+package com.example.gradlespring.model;
 
 import java.io.Serializable;
 
